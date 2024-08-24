@@ -1,0 +1,526 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_campaignOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_campaignName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_campaignDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_campaignImage",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignStartTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "_campaignID",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "AMOUNT_CANT_BE_0",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CAMPAIGN_ENDED",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CAMPAIGN_NOT_STARTED",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "CAMPAIGN_TARGET_MET",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "INSUFICIENT_BALANCE",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NOT_AUTHORIZED",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ReentrancyGuardReentrantCall",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amountDonated",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "totalAmountReceived",
+						"type": "uint256"
+					}
+				],
+				"name": "campaignDonated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "totalAmountReceived",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignEndTime",
+						"type": "uint256"
+					}
+				],
+				"name": "campaignEnded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amountWithdrawn",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignBalance",
+						"type": "uint256"
+					}
+				],
+				"name": "campaignWithdrawal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "campaignName",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignCreatedTime",
+						"type": "uint256"
+					}
+				],
+				"name": "createdCampaign",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignEndTime",
+						"type": "uint256"
+					}
+				],
+				"name": "updatedCampaign",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "campaignDetails",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "campaignID",
+						"type": "uint32"
+					},
+					{
+						"internalType": "address",
+						"name": "campaignOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "campaignName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "campaignDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "campaignImage",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "campaignCreatedTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "campaignStartTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "campaignEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountCampaignReceived",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "campaignBalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCampaignEnded",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "donateToCampaign",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "endCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCampaignDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "campaignID",
+								"type": "uint32"
+							},
+							{
+								"internalType": "address",
+								"name": "campaignOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignDescription",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignImage",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignCreatedTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignStartTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignTargetAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountCampaignReceived",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignBalance",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address[]",
+								"name": "donors",
+								"type": "address[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "isCampaignEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DonationCampaign.CampaignDetails",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignTargetAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "updateCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawFromCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"details": "DonationCampaign is a contract that represents a campaingn donation",
+			"errors": {
+				"ReentrancyGuardReentrantCall()": [
+					{
+						"details": "Unauthorized reentrant call."
+					}
+				]
+			},
+			"events": {
+				"campaignDonated(uint256,uint256)": {
+					"details": "Emitted when a user donates to the campaign"
+				},
+				"campaignEnded(uint256,uint256,uint256)": {
+					"details": "Emitted when a campaign is ended"
+				},
+				"campaignWithdrawal(uint256,uint256)": {
+					"details": "Emitted when a user withdraws from the campaign"
+				},
+				"createdCampaign(string,uint256,uint256)": {
+					"details": "Emitted when campaign is created"
+				},
+				"updatedCampaign(uint256,uint256)": {
+					"details": "Emitted when campaign is updated"
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "This function is used to initialize the contract when it is deployed.",
+					"params": {
+						"_campaignDescription": "A description of the campaign.",
+						"_campaignEndTime": "The end time of the campaign in Unix timestamp format.",
+						"_campaignID": "A unique identifier for the campaign.",
+						"_campaignImage": "An image or logo for the campaign.",
+						"_campaignName": "The name of the campaign.",
+						"_campaignOwner": "The address of the campaign owner.",
+						"_campaignStartTime": "The start time of the campaign in Unix timestamp format.",
+						"_campaignTargetAmount": "The target amount that the campaign is aiming for."
+					}
+				},
+				"donateToCampaign()": {
+					"details": "This function allows users to donate Ether to the campaign by sending it as a transaction.  It checks if the amount sent is not zero, if the campaign has not ended and if it hasn't started yet."
+				},
+				"endCampaign()": {
+					"details": "This function allows the campaign owner to end the campaign and record the time it ended.  It sets the isCampaignEnded flag to true."
+				},
+				"getCampaignDetails()": {
+					"details": "This function returns all the details related to a campaign.",
+					"returns": {
+						"_0": "The struct containing all the details about the campaign."
+					}
+				},
+				"updateCampaign(uint256,uint256)": {
+					"details": "This function allows the campaign owner to update the end time and target amount of the campaign.  If called before the start time, it reverts with an error message indicating that the campaign has not started yet.",
+					"params": {
+						"_campaignEndTime": "The new end time for the campaign in Unix timestamp format.",
+						"_campaignTargetAmount": "The new target amount for the campaign."
+					}
+				},
+				"withdrawFromCampaign(uint256)": {
+					"details": "This function allows the campaign owner to withdraw Ether from the campaign.  It calculates a withdrawal fee and subtracts it from the amount withdrawn, sending both amounts (withdrawal fee and actual balance) to the factory contract and the sender respectively.  The function is reentrant safe.",
+					"params": {
+						"_amount": "The amount of Ether to be withdrawn by the owner."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Constructor for the DonationCampaign contract."
+				},
+				"donateToCampaign()": {
+					"notice": "Donates funds to the campaign."
+				},
+				"endCampaign()": {
+					"notice": "Ends the campaign."
+				},
+				"getCampaignDetails()": {
+					"notice": "Retrieves the details of a campaign."
+				},
+				"updateCampaign(uint256,uint256)": {
+					"notice": "Updates campaign details."
+				},
+				"withdrawFromCampaign(uint256)": {
+					"notice": "Withdraws funds from the campaign."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DonationCampaign.sol": "DonationCampaign"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/ReentrancyGuard.sol": {
+			"keccak256": "0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7448ab095d6940130bcf76ba47a2eab14148c83119523b93dd89f6d84edd6c02",
+				"dweb:/ipfs/QmawrZ4voKQjH3oomXT3Kuheb3Mnmo2VvVpxg8Ne5UJUrd"
+			]
+		},
+		"contracts/DonationCampaign.sol": {
+			"keccak256": "0x1af6240aede821a672ab45f4157c5be9607d0da70d45999d1509601c96ac79b0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ce0c96794ec2a48a46597033b6889b6bd17a8c5efb3ef916171c248ce75abe87",
+				"dweb:/ipfs/QmcPSkgvva8c8eoJnPPHZS7pjKqhA9o6gh5heD4nb5NtbG"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,466 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "campaignName",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignTargetAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignCreatedTime",
+						"type": "uint256"
+					}
+				],
+				"name": "createdCampaign",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "checkTotalFeesGotten",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_campaignName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_campaignDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_campaignImage",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignStartTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignEndTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_campaignTargetAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "createDonationCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllCampaignDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "campaignID",
+								"type": "uint32"
+							},
+							{
+								"internalType": "address",
+								"name": "campaignOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignDescription",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignImage",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignCreatedTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignStartTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignTargetAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountCampaignReceived",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignBalance",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address[]",
+								"name": "donors",
+								"type": "address[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "isCampaignEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DonationCampaign.CampaignDetails[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "getCampaignAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "getCampaignByAddress",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "campaignID",
+								"type": "uint32"
+							},
+							{
+								"internalType": "address",
+								"name": "campaignOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignDescription",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignImage",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignCreatedTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignStartTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignTargetAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountCampaignReceived",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignBalance",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address[]",
+								"name": "donors",
+								"type": "address[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "isCampaignEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DonationCampaign.CampaignDetails[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "getCampaignByID",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "campaignID",
+								"type": "uint32"
+							},
+							{
+								"internalType": "address",
+								"name": "campaignOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignDescription",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "campaignImage",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignCreatedTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignStartTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignEndTime",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignTargetAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountCampaignReceived",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "campaignBalance",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address[]",
+								"name": "donors",
+								"type": "address[]"
+							},
+							{
+								"internalType": "bool",
+								"name": "isCampaignEnded",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct DonationCampaign.CampaignDetails",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"createdCampaign(string,uint256,uint256)": {
+					"details": "Emitted when campaign is created"
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"checkTotalFeesGotten()": {
+					"details": "The result is returned as a uint256.",
+					"returns": {
+						"_0": "TotalFeesReceived The total amount of fees received by this contract in wei."
+					}
+				},
+				"getAllCampaignDetails()": {
+					"details": "The result is returned as an array of CampaignDetails structs.",
+					"returns": {
+						"_0": "AllCampaignDetails An array containing details about all active and ended campaigns."
+					}
+				},
+				"getCampaignByAddress(address)": {
+					"details": "The result is returned as an array of CampaignDetails structs.",
+					"params": {
+						"_addr": "The address of the user whose campaigns are to be retrieved."
+					},
+					"returns": {
+						"_0": "UserCampaignDetails An array containing details about all active and ended campaigns by the user."
+					}
+				},
+				"getCampaignByID(uint256)": {
+					"details": "The result is returned as a CampaignDetails struct.",
+					"params": {
+						"_id": "The id of the campaign whose details are to be retrieved."
+					},
+					"returns": {
+						"_0": "SpecificCampaignDetails Details about the specified campaign."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"checkTotalFeesGotten()": {
+					"notice": "Returns the total amount of fees received by this contract in wei."
+				},
+				"getAllCampaignDetails()": {
+					"notice": "Returns all the campaigns that have been created by any user."
+				},
+				"getCampaignByAddress(address)": {
+					"notice": "Returns all the campaigns that a specific user has created."
+				},
+				"getCampaignByID(uint256)": {
+					"notice": "Returns the details of a specific campaign."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DonationCampaignFactory.sol": "DonationFactory"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/ReentrancyGuard.sol": {
+			"keccak256": "0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7448ab095d6940130bcf76ba47a2eab14148c83119523b93dd89f6d84edd6c02",
+				"dweb:/ipfs/QmawrZ4voKQjH3oomXT3Kuheb3Mnmo2VvVpxg8Ne5UJUrd"
+			]
+		},
+		"contracts/DonationCampaign.sol": {
+			"keccak256": "0x1af6240aede821a672ab45f4157c5be9607d0da70d45999d1509601c96ac79b0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ce0c96794ec2a48a46597033b6889b6bd17a8c5efb3ef916171c248ce75abe87",
+				"dweb:/ipfs/QmcPSkgvva8c8eoJnPPHZS7pjKqhA9o6gh5heD4nb5NtbG"
+			]
+		},
+		"contracts/DonationCampaignFactory.sol": {
+			"keccak256": "0xaaf54ba3cd3941fdcbd319b6fd4aa03e24a2a8fc80311e1579eb3382cdf32cca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6d273f5cd100c963ad8755837e8bf8d82f2e98d04e3d751c9fe9cd48cdb7029e",
+				"dweb:/ipfs/QmX8xebPJNC3uZEVtyhCYWcaAyW9Z4BXSZFzEPs1NYfTuQ"
+			]
+		}
+	},
+	"version": 1
+}

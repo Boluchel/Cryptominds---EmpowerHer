@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DonationCampaignFactory.sol": "D"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DonationCampaignFactory.sol": {
+			"keccak256": "0x7c0216eeb19d918df6dcfd4553adce86ce94a212cfd748661615fe162545c72a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10eae0cd9a0aa3aa535d606a4928dfd5bcb5fc3e78936af92ca709989add34a2",
+				"dweb:/ipfs/QmUow5qxFrMyD3CnsA3dvEwRP9pDeuQaV54KEnJYWXyF1k"
+			]
+		}
+	},
+	"version": 1
+}
